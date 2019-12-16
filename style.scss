@@ -1,0 +1,382 @@
+body {
+  margin: 0;
+  padding: 0;
+  color: #444;
+}
+h1, h2, h3, h4, h5, h6, p, ul {
+  margin: 0;
+  padding: 0;
+}
+.container {
+  width: 980px;
+  margin: 0 auto;
+}
+
+/* Header */
+header {
+  width: 100%;
+  background: #666;
+  .container {
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    h1 {
+      a {
+        color: #b6a489;
+        text-decoration: none;
+      }
+    }
+    ul {
+      list-style: none;
+      display: flex;
+      li {
+        margin-left: 30px;
+        a {
+          color: #fff;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}
+
+// index.php
+.main-display {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 50px;
+  .side-bar {
+    width: 20%;
+    background: rgb(226, 215, 179);
+    padding: 30px 10px;
+  }
+  .main-wrapper {
+    width: 70%;
+    .products-area {
+      display: flex;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+      .product-area {
+        width: 30%;
+        margin-right: 3%;
+        img {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+// productDetail
+.product-title {
+  font-weight: bold;
+  margin: 30px 0;
+  .category-tag {
+    background: skyblue;
+    padding: 5px;
+    margin-right: 20px;
+    color: #fff;
+  }
+}
+.icn-like {
+  font-size: 30px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+.icn-like.active {
+  color: pink;
+}
+.product-detail {
+  display: flex;
+  justify-content: space-between;
+  .main-img {
+    width: 70%;
+    img {
+      width: 100%;
+    }
+  }
+  .sub-img {
+    width: 20%;
+    img {
+      width: 100%;
+      margin-bottom: 20px;
+      cursor: pointer;
+    }
+  }
+}
+.body {
+  background: rgba(226, 215, 179, .5);
+  min-height: 200px;
+  padding: 10px;
+  box-sizing: border-box;
+  margin: 30px 0;
+}
+.product-below {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 50px;
+  .price {
+    margin-left: auto;
+    font-weight: bold;
+    font-size: 25px;
+  }
+  .buy {
+    background: brown;
+    width: 130px;
+    height: 50px;
+    line-height: 50px;
+    font-size: 16px;
+    padding: 5px;
+    margin-left: 20px;
+    font-weight: bold;
+    color: #fff;
+    text-align: center;
+    cursor: pointer;
+    box-sizing: border-box;
+  }
+  .cannot {
+    background: #f6f5f4;
+    width: 130px;
+    height: 50px;
+    line-height: 50px;
+    font-size: 16px;
+    margin-left: 20px;
+    text-align: center;
+    font-weight: bold;
+  }
+}
+
+// Login, Signup
+.form-area {
+  border: 3px solid #F1F1F1;
+  width: 500px;
+  margin: 50px auto 0;
+  padding: 40px;
+  box-sizing: border-box;
+  h1 {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  form {
+    overflow: hidden;
+    .err {
+      color: red;
+    }
+    label {
+      margin-bottom: 15px;
+    }
+    input {
+      width: 100%;
+      height: 50px;
+      padding: 10px;
+      font-size: 16px;
+      margin: 10px 0 30px;
+      background: #f6f5f5;
+      border: none;
+      box-sizing: border-box;
+    }
+    .checkbox {
+      display: flex;
+      text-align: left;
+    }
+    input[type='submit'] {
+      width: 150px;
+      background: brown;
+      color: #fff;
+      float: right;
+      cursor: pointer;
+      margin: 0;
+    }
+  }
+}
+
+// Mypage
+#mypage {
+  h1, h2 {
+    text-align: center;
+  }
+  .myProducts {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    .product {
+      width: 30%;
+      img {
+        width: 100%;
+      }
+    }
+  }
+}
+.mypage {
+  display: flex;
+  justify-content: space-between;
+  margin: 50px auto;
+  .edit-form {
+    border: 3px solid #F1F1F1;
+    padding: 50px;
+    overflow: hidden;
+    input {
+      height: 50px;
+      padding: 10px;
+      font-size: 16px;
+      margin: 10px 0 30px;
+      background: #f6f5f4;
+      width: 100%;
+      border: none;
+      box-sizing: border-box;
+    }
+    input[type='submit'] {
+      width: 150px;
+      background: brown;
+      color: #fff;
+      float: right;
+      cursor: pointer;
+      margin: 0;
+    }
+  }
+  .side-bar {
+    background: #f6f5f4;
+    padding: 30px;
+    margin-left: 20px;
+    ul {
+      list-style: none;
+      li {
+        margin-bottom: 15px;
+        a {
+          text-decoration: none;
+          color: #444;
+          transition: .3s;
+          &:hover {
+            opacity: .5;
+          }
+        }
+      }
+    }
+  }
+}
+
+// ImageLivePreview
+.img-box {
+  width: 200px;
+  height: 200px;
+  background: #f6f5f4;
+  position: relative;
+  font-size: 20px;
+  color: rgba(255, 199, 0, 0.65);
+  text-align: center;
+  line-height: 200px;
+  position: relative;
+  box-sizing: border-box;
+  input[type="file"] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+  }
+  .img-preview {
+    width: 100%;
+  }
+}
+
+// Message
+.information-area {
+  height: 170px;
+  background: #f6f5f4;
+  display: flex;
+  margin: 30px 0;
+  justify-content: space-between;
+  padding: 30px;
+  box-sizing: border-box;
+  .user-info {
+    display: flex;
+    img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      margin-right: 30px;
+    }
+    .user {
+      p {
+        margin-bottom: 5px;
+      }
+    }
+  }
+  .product-info {
+    display: flex;
+    img {
+      width: 100px;
+      margin-right: 30px;
+    }
+  }
+}
+.message-area {
+  background: #f6f5f4;
+  height: 800px;
+  padding: 30px;
+  margin-bottom: 30px;
+  .message {
+    height: 60%;
+    .talk {
+      display: flex;
+      margin: 30px 0;
+      img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+      }
+      p {
+        line-height: 50px;
+      }
+    }
+    .1 {
+      img {
+        margin-left: auto;
+      }
+    }
+    .2 {
+      justify-content: flex-end;
+      img {
+        margin-right: auto;
+      }
+    }
+  }
+  .send {
+    height: 40%;
+    textarea {
+      width: 100%;
+      height: 200px;
+      border: none;
+      font-size: 16px;
+      padding: 10px;
+      margin-bottom: 20px;
+      box-sizing: border-box;
+    }
+    p {
+      text-align: right;
+      input {
+        // float: right;
+        background: brown;
+        color: #fff;
+        font-size: 20px;
+        padding: 10px 20px;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+// Footer
+footer {
+  width: 100%;
+  background: #666;
+  text-align: center;
+  color: #fff;
+  height: 100px;
+  line-height: 100px;
+}
