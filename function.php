@@ -25,9 +25,11 @@ function h($s) {
 }
 
 function dbConnect() {
-  $dsn = 'mysql:dbname=output1;host=us-cdbr-iron-east-05.cleardb.net;charset=utf8';
-  $user = 'b2dbd745155204';
-  $password = '48a25819';
+  $db = parse_url($_SERVER['CLEARDB_DATABASE_URL']);
+  $db['dbname'] = ltrim($db['path'], '/');
+  $dsn = "mysql:host={$db['host']};dbname={$db['dbname']};charset=utf8";
+  $user = $db['user'];
+  $password = $db['pass'];
   $options = [
     // SQL実行失敗時にはエラーコードのみ設定
     PDO::ATTR_ERRMODE => PDO::ERRMODE_SILENT,
