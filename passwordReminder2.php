@@ -7,7 +7,6 @@ if (!empty($_POST)) {
   if ($_SESSION['activate-limit'] > time()) {
 
     if ($_POST['activation-code'] === $_SESSION['activation-code']) {
-      // 実際には新パスワードをメール送信＆DB登録する
       header('Location: login.php');
     } else {
       $err_msg['common'] = 'Wrong activation code!';

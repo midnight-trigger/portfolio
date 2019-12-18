@@ -4,7 +4,6 @@ require('auth.php');
 
 $getFlg = false;
 
-// カテゴリー取得
 try {
   $dbh = dbConnect();
   $sql = 'SELECT id, name FROM categories';

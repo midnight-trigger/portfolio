@@ -1,17 +1,11 @@
 <?php
 ini_set('display_errors', 1);
-
 session_save_path("/var/tmp/");
-//ガーベージコレクションが削除するセッションの有効期限を設定（30日以上経っているものに対してだけ１００分の１の確率で削除）
 ini_set('session.gc_maxlifetime', 60*60*24*30);
-//ブラウザを閉じても削除されないようにクッキー自体の有効期限を延ばす
 ini_set('session.cookie_lifetime ', 60*60*24*30);
-//セッションを使う
 session_start();
-//現在のセッションIDを新しく生成したものと置き換える（なりすましのセキュリティ対策）
-session_regenerate_id();// DB接続
+session_regenerate_id();
 
-// 定数管理
 define('MAX_FILE_SIZE', 1 * 1024 * 1024);
 define("MSG1", '入力内容が正しくありません');
 define("MSG2", 'パスワードが正しく入力されていません');
@@ -25,25 +19,23 @@ function h($s) {
 }
 
 function dbConnect() {
+  // Heroku Information
   $db = parse_url($_SERVER['CLEARDB_DATABASE_URL']);
   $db['dbname'] = ltrim($db['path'], '/');
   $dsn = "mysql:host={$db['host']};dbname={$db['dbname']};charset=utf8";
   $user = $db['user'];
   $password = $db['pass'];
 
+  // MAMP Information
   // $dsn = 'mysql:dbname=output1;host=localhost;charset=utf8';
   // $user = 'root';
   // $password = '4318';
+
   $options = [
-    // SQL実行失敗時にはエラーコードのみ設定
     PDO::ATTR_ERRMODE => PDO::ERRMODE_SILENT,
-    // デフォルトフェッチモードを連想配列形式に設定
     PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-    // バッファードクエリを使う(一度に結果セットをすべて取得し、サーバー負荷を軽減)
-    // SELECTで得た結果に対してもrowCountメソッドを使えるようにする
     PDO::MYSQL_ATTR_USE_BUFFERED_QUERY => true,
   ];
-  // PDOオブジェクト生成（DBへ接続）
   $dbh = new PDO($dsn, $user, $password, $options);
   return $dbh;
 }
@@ -66,14 +58,14 @@ function uploadImg($file) {
   try {
     if (isset($file['error']) && is_int($file['error'])) {
       switch ($file['error']) {
-        case UPLOAD_ERR_OK: // OK
+        case UPLOAD_ERR_OK:
         break;
-        case UPLOAD_ERR_NO_FILE:   // ファイル未選択の場合
+        case UPLOAD_ERR_NO_FILE:
         throw new RuntimeException('ファイルが選択されていません');
-        case UPLOAD_ERR_INI_SIZE:  // php.ini定義の最大サイズが超過した場合
-        case UPLOAD_ERR_FORM_SIZE: // フォーム定義の最大サイズ超過した場合
+        case UPLOAD_ERR_INI_SIZE:
+        case UPLOAD_ERR_FORM_SIZE:
         throw new RuntimeException('ファイルサイズが大きすぎます');
-        default: // その他の場合
+        default:
         throw new RuntimeException('その他のエラーが発生しました');
       }
 

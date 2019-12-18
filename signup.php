@@ -2,7 +2,6 @@
 require('function.php');
 
 if (!empty($_POST)) {
-  // バリデーション
   try {
     $dbh = dbConnect();
     $sql = 'SELECT email FROM users WHERE email = :email AND delete_flg = 0';
