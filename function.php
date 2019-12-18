@@ -1,5 +1,5 @@
 <?php
-ini_set('display_errors', "On");
+ini_set('display_errors', 1);
 
 session_save_path("/var/tmp/");
 //ガーベージコレクションが削除するセッションの有効期限を設定（30日以上経っているものに対してだけ１００分の１の確率で削除）
@@ -30,6 +30,10 @@ function dbConnect() {
   $dsn = "mysql:host={$db['host']};dbname={$db['dbname']};charset=utf8";
   $user = $db['user'];
   $password = $db['pass'];
+
+  // $dsn = 'mysql:dbname=output1;host=localhost;charset=utf8';
+  // $user = 'root';
+  // $password = '4318';
   $options = [
     // SQL実行失敗時にはエラーコードのみ設定
     PDO::ATTR_ERRMODE => PDO::ERRMODE_SILENT,

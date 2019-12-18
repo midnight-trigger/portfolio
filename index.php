@@ -1,7 +1,6 @@
 <?php
 require('function.php');
 
-
 try {
   $dbh = dbConnect();
   $sql = 'SELECT products.id, products.name AS productName, price, pic1, categories.name AS categoryName FROM products INNER JOIN categories ON products.category_id = categories.id';
